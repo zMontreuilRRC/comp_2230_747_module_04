@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Form</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <!-- for this example, get the user to enter some basic info as though they were
      creating an account -->
-    <form>
+    <form id="form_user">
         <!-- forms typically have a combination of labels and inputs -->
          <!-- inputs always have a type and name -->
           <!-- labels should match the ID in their "for" attribute -->
-        <input type="text" name="email" id="field_email" placeholder="Enter email"/>
-        <label for="field_email">Email</label>
-
+        <!-- <div class="input-container">
+            <label for="field_email">Email</label>
+            <input type="text" name="email" 
+                id="field_email" placeholder="Enter email"/>
+        </div> -->
+        <div class="input-container">
+            <label for="field_username">User Name</label>
+            <input type="text" name="userName" id="field_username" 
+                placeholder="Enter user name" />
+        </div>
         <!-- submit input will cause the form to Submit its data -->
         <input type="submit" value="Submit"/>
     </form>
