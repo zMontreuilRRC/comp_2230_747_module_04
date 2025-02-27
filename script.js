@@ -32,10 +32,11 @@ function validateForm() {
     const userNameValue = userNameInputNode.value;
 
     // contains no spaces
+    // blacklist pattern: excludes values we don't want
     if(userNameValue.includes(" ")) {
         isValid = false;
         showInputError(userNameInputNode, "Usernames cannot include spaces");
-    } 
+    }
     
     // has more than three characters
     if(userNameValue.trim().length < 4) {
@@ -45,8 +46,28 @@ function validateForm() {
         );
     }
 
-    // "can't include these characters: "+ - % $ 
-    // Regular Express (regex)
+    // EMAIL VALIDATION (whitelist)
+    // whitelist identifies what is a valid pattern, and excludes all else
+    const emailInputNode = document.querySelector("#field_email");
+    const emailInputValue = emailInputNode.value;
+    
+    // regex pattern
+    const simpleEmailPattern = /.+@.+\..+/;
+    /**
+     * "One of more of any character, followed by @, 
+     * followed by one or more of any character,
+     * followed by ., followed by one or more of any character"
+     * 
+     * .+: one or more of any character, except line breaks
+     * @: Literal "@" symbol
+     * \.: literal "." symbol
+     */
+
+    // regex.test() returns true if the argument matches that regex pattern
+    if(!simpleEmailPattern.test(emailInputValue)) {
+        showInputError(emailInputNode, "Please enter a valid email address.");
+        isValid = false;
+    }
 
     return isValid;
 }

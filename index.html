@@ -7,25 +7,31 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+<main>
+    <h1>User Info</h1>
     <!-- for this example, get the user to enter some basic info as though they were
      creating an account -->
     <form id="form_user">
-        <!-- forms typically have a combination of labels and inputs -->
-         <!-- inputs always have a type and name -->
-          <!-- labels should match the ID in their "for" attribute -->
-        <!-- <div class="input-container">
-            <label for="field_email">Email</label>
-            <input type="text" name="email" 
-                id="field_email" placeholder="Enter email"/>
-        </div> -->
-        <div class="input-container">
-            <label for="field_username">User Name</label>
-            <input type="text" name="userName" id="field_username" 
-                placeholder="Enter user name" />
-        </div>
+        <fieldset>
+            <legend>User Information</legend>
+            <!-- forms typically have a combination of labels and inputs -->
+            <!-- inputs always have a type and name -->
+            <!-- labels should match the ID in their "for" attribute -->
+            <div class="input-container">
+                <label for="field_email">Email</label>
+                <input type="text" name="email" 
+                    id="field_email" placeholder="Enter email"/>
+            </div>
+            <div class="input-container">
+                <label for="field_username">User Name</label>
+                <input type="text" name="userName" id="field_username" 
+                    placeholder="Enter user name" />
+            </div>
+        </fieldset>
         <!-- submit input will cause the form to Submit its data -->
         <input type="submit" value="Submit"/>
     </form>
-    <script src="./script.js"></script>
+</main>
+<script src="./script.js"></script>
 </body>
 </html>
