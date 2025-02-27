@@ -52,19 +52,26 @@ function validateForm() {
     const emailInputValue = emailInputNode.value;
     
     // regex pattern
-    const simpleEmailPattern = /.+@.+\..+/;
+    // used from RRC Software Dev Module 4 notes
+    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
     /**
-     * "One of more of any character, followed by @, 
-     * followed by one or more of any character,
-     * followed by ., followed by one or more of any character"
+     * ^: start of pattern (any values before this pattern are invalid)
      * 
-     * .+: one or more of any character, except line breaks
-     * @: Literal "@" symbol
-     * \.: literal "." symbol
+     * [A-Z0-9._%+-]+ : one or more characters that are letters (A-Z), numbers (0-9),
+     * or . _ % + -
+     * 
+     * @: literal '@' symbol
+     * 
+     * \.: literal '.' symbol
+     * 
+     * [A-Z]{2,}: two or more alphabetic characters
+     * 
+     * $: end of pattern
      */
 
     // regex.test() returns true if the argument matches that regex pattern
-    if(!simpleEmailPattern.test(emailInputValue)) {
+    if(!emailPattern.test(emailInputValue)) {
         showInputError(emailInputNode, "Please enter a valid email address.");
         isValid = false;
     }
