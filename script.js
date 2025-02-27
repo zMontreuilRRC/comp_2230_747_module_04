@@ -29,7 +29,7 @@ function validateForm() {
 
     // ensure username has at least 3 characters and no spaces
     const userNameInputNode = document.querySelector("#field_username");
-    const userNameValue = userNameInputNode.value;
+    const userNameValue = escapeHTML(userNameInputNode.value);
 
     // contains no spaces
     // blacklist pattern: excludes values we don't want
@@ -49,7 +49,7 @@ function validateForm() {
     // EMAIL VALIDATION (whitelist)
     // whitelist identifies what is a valid pattern, and excludes all else
     const emailInputNode = document.querySelector("#field_email");
-    const emailInputValue = emailInputNode.value;
+    const emailInputValue = escapeHTML(emailInputNode.value);
     
     // regex pattern
     // used from RRC Software Dev Module 4 notes
@@ -92,4 +92,19 @@ function showInputError(inputElement, message) {
 
     // append message to element
     inputContainer.appendChild(errorText);
+}
+
+// replace special characters with corresponding HTML entities
+// <table>
+// return: &lt;table&gt; 
+// this prevents any characters from being entered that could be interpreted as HTML elements
+function escapeHTML(input) {
+    // simple recipe from course notes that sanitizes HTML inputs
+    // sanitizing: creating a "safe" string that cannot be intepreted as code/markup
+    return input
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
